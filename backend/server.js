@@ -4,6 +4,7 @@ const bodyParser = require('body-parser')
 const connectDB = require('./config/db')
 const morgan = require('morgan')
 const path = require('path')
+const userRoutes = require('./routes/user')
 
 dotenv.config()
 connectDB()
@@ -21,6 +22,8 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 
 //ROUTES
+app.use('/api/users',userRoutes)
+
 const __dirname1 = path.resolve()
 app.use('/uploads', express.static(path.join(__dirname1, '/uploads')))
 
