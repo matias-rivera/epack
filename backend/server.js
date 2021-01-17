@@ -1,25 +1,26 @@
 const express = require('express')
 const dotenv = require('dotenv')
-const bodyParser = require('body-parser');
+const bodyParser = require('body-parser')
+const connectDB = require('./config/db')
 const morgan = require('morgan')
 const path = require('path')
 
-const app = express()
 dotenv.config()
+connectDB()
+const app = express()
 
 if(process.env.NODE_ENV === 'development'){
     app.use(morgan('dev'))
 }
+
+app.use(express.json())
+
 
 app.use(bodyParser.json()) // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true }))
 
 
 //ROUTES
-
-
-
-
 const __dirname1 = path.resolve()
 app.use('/uploads', express.static(path.join(__dirname1, '/uploads')))
 
