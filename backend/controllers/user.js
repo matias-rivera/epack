@@ -13,6 +13,7 @@ exports.register = async (req, res) =>{
         throw new Error('User already exists')
     }
 
+    
     const user = await User.create({
         name,
         email,
@@ -31,5 +32,53 @@ exports.register = async (req, res) =>{
         res.status(400)
         throw new Error('Invalid user data')
     }
+}
 
+
+//@desc     Get all users
+//@route    GET /api/users
+//@access   Private/admin
+exports.read = async (req, res) =>{
+    const users = await User.find({}).select('-password')
+    res.json(users)
+}
+
+
+//@desc     Update user
+//@route    PUT /api/users/:id
+//@access   Private/admin
+exports.update = async (req, res) =>{
+    
+    const user = await User.findById(req.params.id)
+
+    if(user){
+        user.name = req.body.name || user.name
+        user.email = req.body.email || user.email
+        user.isAdmin = req.body.isAdmin || user.isAdmin 
+     
+        const updatedUser = await user.save()
+
+        res.json({message:'user was updated successfully'})
+    }else{
+        res.status(404)
+        throw new Error('User not found')
+    }
+}
+
+
+//@desc     Delete user
+//@route    DELETE /api/users/:id
+//@access   Private/admin
+exports.remove = async (req, res) =>{
+    const user = await User.findById(req.params.id)
+    
+    if(user) {
+        await user.remove()
+        res.json({ message: 'User removed'})
+    } else {
+        res.status(404)
+        throw new Error('User not found')
+    }
+
+    
 }
