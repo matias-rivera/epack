@@ -6,6 +6,7 @@ const morgan = require('morgan')
 const path = require('path')
 const userRoutes = require('./routes/user')
 const clientRoutes = require('./routes/client')
+const orderRoutes = require('./routes/order')
 
 
 dotenv.config()
@@ -26,6 +27,8 @@ app.use(bodyParser.urlencoded({ extended: true }))
 //ROUTES
 app.use('/api/users',userRoutes)
 app.use('/api/clients', clientRoutes)
+app.use('/api/orders', orderRoutes)
+
 
 const __dirname1 = path.resolve()
 app.use('/uploads', express.static(path.join(__dirname1, '/uploads')))

@@ -104,8 +104,8 @@ exports.update = (req, res) =>{
 }
 
 
-//@desc     Delete user
-//@route    DELETE /api/users/:id
+//@desc     Delete client
+//@route    DELETE /api/clients/:id
 //@access   Private/admin
 exports.remove = (req, res) =>{
     Client.findOneAndRemove(req.params.id).exec((err, client) => {
