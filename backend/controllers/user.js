@@ -151,19 +151,14 @@ exports.update = (req, res) =>{
 //@route    DELETE /api/users/:id
 //@access   Private/admin
 exports.remove = (req, res) =>{
-    User.findById(req.params.id).exec((err, user) => {
+    User.findOneAndRemove(req.params.id).exec((err, user) => {
         if(err){
             return res.status(400).json({
-                error: 'User not found'
+                error: errorHandler(err)
             })
         }
-        user.remove().exec((err, result) => {
-            if(err){
-                return res.status(400).json({
-                    error: errorHandler(err)
-                })
-            }
-            res.json({ message: 'User removed'})
+        res.json({
+            message: 'User deleted successfully'
         })
     })
     
