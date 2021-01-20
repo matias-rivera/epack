@@ -1,5 +1,30 @@
 const mongoose = require('mongoose')
 
+
+const trace = mongoose.Schema(
+    {
+        state:{
+            type: String,
+            required: true
+        },
+        date: {
+            type:Date
+        },
+        branch: {
+            type:String,
+            required:true
+        },
+        zone: {
+            type:String,
+            required: true,
+        },
+        courier: {
+            type:Number,
+            required:true
+        }
+     }
+,{ _id : false, required: true });
+
 const orderSchema = mongoose.Schema({
     user: {
         type: mongoose.Schema.Types.ObjectId,
@@ -20,27 +45,7 @@ const orderSchema = mongoose.Schema({
         note: {type:String}
     },
     tracing: [
-        {
-           state:{
-               type: String,
-               required: true
-           },
-           date: {
-               type:Date
-           },
-           branch: {
-               type:String,
-               required:true
-           },
-           zone: {
-               type:String,
-               required: true,
-           },
-           courier: {
-               type:Number,
-               required:true
-           }
-        }
+        trace
     ],
     price: {
         type:Number,

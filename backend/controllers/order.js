@@ -2,8 +2,6 @@ const { errorHandler } = require('../helpers/dbErrorHandler')
 const Order = require('../models/order')
 const User = require('../models/user')
 
-
-
 //@desc     Create a new order
 //@route    POST /api/orders
 //@access   Private
@@ -96,19 +94,6 @@ exports.update = (req, res) =>{
             }
             res.json({message:'Order was updated successfully'})
         })
-           /*  user.name = req.body.name || user.name
-            user.email = req.body.email || user.email
-            user.isAdmin = req.body.isAdmin || user.isAdmin 
-         
-            user.save((err, result) => {
-                if(err){
-                    return res.status(400).json({
-                        error: errorHandler(err)
-                    })
-                }
-                res.json({message:'user was updated successfully'})
-            })
-     */
         
         
     })
