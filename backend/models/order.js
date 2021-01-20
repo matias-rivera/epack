@@ -6,10 +6,18 @@ const orderSchema = mongoose.Schema({
         required: true,
         ref: 'User'
     },
-    client:{
-        type:mongoose.Schema.Types.ObjectId,
-        required: true,
-        ref:'Client'
+    client: {
+        dni:{type: Number,required: true},
+        name: {type: String,required: true},
+        phone:{type: Number},
+        email:{type: String}
+    },
+    shippingAddress: {
+        address: {type:String,required:true},
+        city: {type:String,required:true},
+        postalCode: {type:String,required:true},
+        country: {type:String,required:true},
+        note: {type:String}
     },
     tracing: [
         {
