@@ -1,5 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Navbar.css'
+
 
 const Navbar = () => {
     return ( 
@@ -11,10 +13,13 @@ const Navbar = () => {
             </div>
             <ul className='nav__links'>
                 <li>
-                    <a href='/home'>Track</a>
+                    <Link className='nav__link' to='/'>Track</Link>
                 </li>
                 <li>
-                    <a href='/admin'>Admin</a>
+                    <Link className='nav__link' to='/login'>Login</Link>
+                </li>
+                <li>
+                    <Link className='nav__link' to='/admin'>Admin</Link>
                 </li>
             </ul>
             <label for="nav-toggle" class="icon-burger">

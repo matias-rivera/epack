@@ -1,6 +1,5 @@
 nav {
-	position: fixed;
-	z-index: 10;
+	position: relative;
 	left: 0;
 	right: 0;
 	top: 0;
@@ -32,7 +31,7 @@ nav .nav__links {
 nav .nav__links li {
 	list-style: none;
 }
-nav .nav__links a {
+nav .nav__links .nav__link {
 	display: block;
 	padding: 1em;
 	font-size: 16px;
@@ -82,7 +81,7 @@ nav .icon-burger .nav__line {
 		box-sizing: border-box;
 		transition: all .5s ease-in-out;
 	}
-	nav .nav__links a {
+	nav .nav__links .nav__link {
         margin-top: 3rem;
 		font-size: 20px;
 	}
